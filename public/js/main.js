@@ -50,6 +50,7 @@ const confirmLogout = () => {
 const toggleDarkMode = () => {
     const body = document.body;
     body.classList.toggle("dark-mode");
+    burgerMenu()
 
     // Sauvegarde la préférence de l'utilisateur dans localStorage
     const isDarkModeEnabled = body.classList.contains("dark-mode");

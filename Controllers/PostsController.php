@@ -12,9 +12,8 @@ class PostsController extends Controller
         //On instancie le modèle correspondant à la table "posts"
         $postsModel = new PostsModel();
 
-        //On va chercher tous les posts
-        $posts = $postsModel->findAll();
-        $post = $postsModel->findById(2);
+        //On va chercher tous les posts par ordre du plus récent au plus ancien
+        $posts = $postsModel->findAllDESC();
 
         $this->render('posts/index', $posts);
     }

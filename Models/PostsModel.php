@@ -182,4 +182,9 @@ class PostsModel extends Model
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
     }
+    public function findAllDESC()
+    {
+        $req = $this->customQuery('SELECT * FROM ' . $this->table . ' ORDER BY created_at DESC');
+        return $req->fetchAll();
+    }
 }

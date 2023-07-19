@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\WebsiteModel;
+
 class MainController extends Controller
 {
     public function index()
@@ -15,7 +17,9 @@ class MainController extends Controller
 
     public function maintenance()
     {
-        $this->render('main/maintenance');
+        $websiteModel = new WebsiteModel();
+        $website = $websiteModel->findAll();
+        $this->render('main/maintenance', $website);
     }
 
 

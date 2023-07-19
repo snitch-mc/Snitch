@@ -1,6 +1,7 @@
 <?php
 namespace App\Core;
 use App\Controllers\MainController;
+use App\Models\WebsiteModel;
 
 class Main
 {
@@ -9,9 +10,34 @@ class Main
         //On démarre la session
         session_start();
 
-        //On retirer le trailing "/" éventuel de l'url
+        //On retire le trailing "/" éventuel de l'url
         //On récupère l'url
         $uri = $_SERVER["REQUEST_URI"];
+
+        //Si le mode maintenance est activé, seul la page index sera accessible
+        $websiteModel = new WebsiteModel();
+        $website = $websiteModel->findOneByName("maintenance.enabled");
+
+
+        if (isset($website)){
+            if ($website->value){
+                if (isset($_SESSION["user"])){
+                    if ($_SESSION["user"]["permissions"] != 1){
+                        //Si l'utilisateur existe et n'est pas admin, on affiche le mode maintenance
+                        $controller = new MainController();
+                        //Puis on charge la page maintenance
+                        $controller->maintenance();
+                        exit();
+                    }
+                } else {
+                    //Si le mode maintenance est activé, on instancie le controller par défaut
+                    $controller = new MainController();
+                    //Puis on charge la page maintenance
+                    $controller->maintenance();
+                    exit();
+                }
+            }
+        }
 
         //On vérifie que uri n'est pas vide et se termine pas un "/"
         if(!empty($uri) && $uri[-1] === "/"){
@@ -35,8 +61,9 @@ class Main
             //On met une majuscule, on ajoute le namespace, on ajoute "Controller"
             $controller = '\\App\\Controllers\\' . ucfirst(array_shift($params)) .'Controller';
 
+
+
             //ICI ON CHECK SI LE CONTROLLER EXISTE, SINON RENVOIE 404 OU 500
-            // A FAIRE AVEC LA METHODE class_exists
             if (class_exists($controller)){
                 //J'appelle le contrôleur
                 $controller = new $controller;

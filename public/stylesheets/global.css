@@ -514,6 +514,32 @@ a{
     text-transform: uppercase;
 }
 
+/* ------------ Maintenance Page ------------ */
+
+.hero-maintenance{
+    height: calc(100dvh - (var(--navbar-height) + var(--footer-height)));
+    height: calc(100vh - (var(--navbar-height) + var(--footer-height)));
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.maintenance-title, .maintenance-description{
+    mix-blend-mode: difference;
+    color: var(--light-color);
+}
+
+.maintenance-title{
+    font-family: MinecraftBold;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
 /* ------------ Login/Register Page ------------ */
 .log-reg-main-container{
     min-height: calc(100dvh - var(--navbar-height));
@@ -784,6 +810,18 @@ a{
     margin-top: 100px;
 }
 
+/* ------------ WEBSITE PAGE ------------ */
+
+.website-main-container{
+    min-height: calc(100dvh - var(--navbar-height));
+    min-height: calc(100vh - var(--navbar-height));
+    height: 100%;
+    background-color: var(--background-color);
+    padding: 100px;
+    box-sizing: border-box;
+    transition: background-color 350ms ease-in-out;
+}
+
 /* MOBILE AND IPAD */
 
 @media screen and (max-width: 768px) {
@@ -799,7 +837,21 @@ a{
         width: 20px;
         height: 3px;
         background-color: var(--light-color);
+        transition: height 100ms ease-in-out 300ms, transform 150ms ease-in-out;
     }
+    #burger-menu[data-state="open"] .burger-line{
+        transition: height 100ms ease-in-out, transform 400ms ease-in-out 300ms;
+    }
+    #burger-menu[data-state="open"] #bl-second{
+        height: 0px;
+    }
+    #burger-menu[data-state="open"] #bl-first{
+        transform: translate(0, 3px) rotate(225deg);
+    }
+    #burger-menu[data-state="open"] #bl-third{
+        transform: translate(0, -4px) rotate(-45deg);
+    }
+
     #nav-items{
         overflow: hidden;
         position: absolute;
@@ -860,6 +912,16 @@ a{
     }
     .profile-main-container{
         padding: 40px 20px;
+    }
+    .hero-404-title, .hero-404-description{
+        color: var(--light-color);
+        mix-blend-mode: difference;
+    }
+    #torch-pointer{
+        display: none;
+    }
+    .hero-404{
+        background-color: var(--background-color);
     }
 }
 

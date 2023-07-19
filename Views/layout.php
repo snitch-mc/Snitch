@@ -24,9 +24,9 @@
                 <a href="/">SNITCH</a>
             </div>
             <div id="burger-menu" data-state="close" onclick="burgerMenu()">
-                <div class="burger-line"></div>
-                <div class="burger-line"></div>
-                <div class="burger-line"></div>
+                <div class="burger-line" id="bl-first"></div>
+                <div class="burger-line" id="bl-second"></div>
+                <div class="burger-line" id="bl-third"></div>
             </div>
             <div id="nav-items" data-state="close">
                 <a href="/" class="txt-button augmented-button <?php if (str_contains($title, "Accueil")) {echo "is-active";}?>">Accueil</a>
@@ -41,14 +41,13 @@
                     <a href="/users/login" class="txt-button augmented-button <?php if (str_contains($title, "Connexion")) {echo "is-active";}?>">Connexion</a>
                     <a href="/users/register" class="txt-button augmented-button <?php if (str_contains($title, "Inscription")) {echo "is-active";}?>">Inscription</a>
                 <?php endif; ?>
+                <?php if (isset($_SESSION["user"]) && $_SESSION["user"]["permissions"] == 1): ?>
+                    <a href="/website" class="txt-button augmented-button <?php if (str_contains($title, "Paramètres")) {echo "is-active";}?>">Panel administrateur</a>
+                <?php endif; ?>
+
                 <img href="" onclick="toggleDarkMode()" id="dark-light-switch" class="augmented-button" src="/assets/images/sun.svg">
-                <!--<a href="" onclick="toggleDarkMode()" class="txt-button">🌙</a>-->
             </div>
         </div>
-    </div>
-    <div class="error-dialog" id="error-dialog" data-state="<?php if (isset($_SESSION["errorMessage"])) {echo "visible";} else {echo "hidden";} ?>">
-        <p><?php if (isset($_SESSION["errorMessage"])) { echo $_SESSION["errorMessage"];} ?></p>
-        <button class="log-reg-submit" onclick="closeDialog()">Fermer</button>
     </div>
 
     <?= $content ?>
