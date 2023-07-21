@@ -93,7 +93,7 @@ CREATE TABLE `settings` (
 INSERT INTO `settings` (`id`, `name`, `value`) VALUES
 (1, 'maintenance.enabled', '0'),
 (2, 'maintenance.title', 'En construction...'),
-(3, 'maintenance.description', 'Le site arrive bientôt pataprout !');
+(3, 'maintenance.description', 'Le site arrive bientôt !');
 
 -- --------------------------------------------------------
 
