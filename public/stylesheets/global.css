@@ -527,6 +527,7 @@ a{
     justify-content: center;
     position: relative;
     overflow: hidden;
+    transition: background-color 350ms ease-in-out;
 }
 
 .maintenance-title, .maintenance-description{
@@ -810,9 +811,9 @@ a{
     margin-top: 100px;
 }
 
-/* ------------ WEBSITE PAGE ------------ */
+/* ------------ SETTINGS PAGE ------------ */
 
-.website-main-container{
+.settings-main-container{
     min-height: calc(100dvh - var(--navbar-height));
     min-height: calc(100vh - var(--navbar-height));
     height: 100%;
@@ -821,6 +822,91 @@ a{
     box-sizing: border-box;
     transition: background-color 350ms ease-in-out;
 }
+
+.settings-card-container{
+    padding: 50px;
+    background-color: var(--main-color);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    border: #f2f4f381 2px solid;
+    box-sizing: border-box;
+}
+
+.settings-title{
+    font-family: Minecraft;
+    font-weight: bold;
+    font-size: 1.7rem;
+    margin-bottom: 50px;
+}
+
+.settings-input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 30px;
+}
+
+
+.toggle-container{
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Styles de base pour le bouton de type activé/désactivé */
+.toggle {
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    height: 34px;
+    z-index: 10;
+}
+
+/* Cacher l'élément <input> */
+.toggle input {
+    display: none;
+}
+
+/* Styles pour le bouton d'arrière-plan (état désactivé) */
+.toggle label {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 17px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+/* Styles pour le bouton d'arrière-plan (état activé) */
+.toggle label::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    transition: transform 0.3s;
+}
+
+/* Styles pour le bouton lorsque l'état est activé */
+.toggle input:checked + label {
+    background-color: #66bb6a;
+}
+
+/* Styles pour le bouton (cercle) lorsqu'il est activé */
+.toggle input:checked + label::before {
+    transform: translateX(26px);
+}
+
 
 /* MOBILE AND IPAD */
 

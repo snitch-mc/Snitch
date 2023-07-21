@@ -68,5 +68,13 @@ class WebsiteModel extends Model
         return $this->customQuery("SELECT * FROM {$this->table} WHERE name = ?", [$name])->fetch();
     }
 
+    public function getValueByName($array, $name) {
+        foreach ($array as $item) {
+            if ($item->name === $name) {
+                return $item->value;
+            }
+        }
+        return null; // Retourner null si le nom n'est pas trouvé
+    }
 }
 
