@@ -2,9 +2,9 @@
 ![App Screenshot](https://i.imgur.com/ZxFKJ3M.png)
 # Snitch
 
-Je joue à Minecraft depuis 2013, et depuis le premier jour je créé des serveurs pour mes amis ou pour des gens que je ne connais pas. J’ai tout de suite adoré ce jeu et son univers, mais une chose revenait trop régulièrement et me déplaisait vraiment : **les mauvais joueurs**
+Quoi de plus désagréable que des mauvais joueurs ? Tricherie, harcèlement, vol, grief, etc.
 
-Il existe plusieurs manières de s’en débarrasser, comme le bannissement, le kick, le ban-ip, etc. mais pourquoi ne pas couper le problème à la racine et s’en débarrasser par défaut ?
+Il existe plusieurs manières de se débarrasser de tout ça, comme le bannissement, le kick, le ban-ip, etc. mais pourquoi ne pas couper le problème à la racine et s’en débarrasser par défaut ?
 
 **Snitch répertorie tous les signalements faits par des administrateurs ou modérateurs de serveur dans une base de données et permet aux serveurs s’en servant de chercher si un utilisateur suspect a déjà été dénoncé pour tricherie ou mauvais comportement sur d’autres serveurs.**
 
