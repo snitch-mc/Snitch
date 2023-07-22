@@ -110,6 +110,8 @@ class UsersController extends Controller
                     $_SESSION["alreadyLogged"] = true;
                     header("Location: /users/profile");
                     exit();
+                } else {
+                    $_SESSION["errorMessage"] = "Informations de connexion incorrectes.";
                 }
             }
 
