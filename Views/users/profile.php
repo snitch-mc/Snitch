@@ -12,7 +12,7 @@ $description = "Voir ou modifier le profil de l'utilisateur.";
                 } elseif ($_SESSION["user"]["permissions"]===2){
                 echo "Gérant de serveur";
                 } elseif ($_SESSION["user"]["permissions"]===3){
-                echo "Visiteur";
+                echo "Membre";
                 }?></p>
         </div>
         <img class="profile-head" src="https://mc-heads.net/avatar/<?php echo $_SESSION["user"]["username"]; ?>/100">
