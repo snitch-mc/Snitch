@@ -31,6 +31,7 @@ $description = "Page d'inscription.";
                 </div>
             </div>
             <button class="log-reg-submit" type="submit"><strong>S'inscrire</strong></button>
+            <a href="/users/login" style="font-size: 0.7rem; margin-top: 50px">Déjà inscrit ? Clique ici.</a>
         </div>
     </form>
 </div>
