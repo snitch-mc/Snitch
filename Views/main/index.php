@@ -25,6 +25,7 @@ $description = "Signalez, protégez, jouez. La plateforme essentielle pour les a
     </div>
 </div>
 <div class="index-main-container">
+    <p style="margin-bottom: 100px; font-size: 1rem; font-style: italic; text-align: center; opacity: 0.7; mix-blend-mode: difference;">"La bienveillance est un langage universel compris de tous."</p>
     <div class="index-rich-text-container" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.4">
         <div class="index-rtc-left">
             <h3>À Propos</h3>
@@ -38,7 +39,7 @@ $description = "Signalez, protégez, jouez. La plateforme essentielle pour les a
     <div class="index-double-container">
         <div class="index-rich-text-container" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.4">
             <div class="index-rtc-left">
-                <h3>Vous ?</h3>
+                <h3>Pour vous ?</h3>
                 <p>Nous cherchons à travailler avec les administrateurs de serveurs. C'est à dire les fondateurs, les modérateurs, etc.</p>
                 <p>Snitch est un outil d'administration, il ne s'adresse donc pas aux joueurs directement.</p>
                 <p>Pour avoir accès à la partie "Signaler" du site web vous devrez contacter l'admin du site.</p>
@@ -94,7 +95,7 @@ $description = "Signalez, protégez, jouez. La plateforme essentielle pour les a
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const element = entry.target;
-                    const endValue = <?= $data["numberUsers"]->total ?> + 24; // Récupérez la valeur depuis le contenu de l'élément
+                    const endValue = <?= $data["numberUsers"]->total ?>; // Récupérez la valeur depuis le contenu de l'élément
                     animateNumber(0, endValue, 2500); // 5000 ms (5 secondes) pour l'animation
                     observer.unobserve(element); // Une fois l'animation lancée, arrêtez d'observer cet élément
                 }

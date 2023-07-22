@@ -27,10 +27,14 @@
     --navbar-height: 78px;
     --footer-height: 82px;
     --background-color: var(--light-color);
+    --index-background-color: rgba(29, 29, 29, 1);
+    --index-text-color: rgba(29, 29, 29, 1);
 }
 
 .dark-mode{
     --background-color: var(--dark-color);
+    --index-background-color: rgba(242, 244, 243, 0.1);
+    --index-text-color: rgba(242, 244, 243, 1);
 }
 
 html{
@@ -294,9 +298,12 @@ a{
     box-sizing: border-box;
     background-color: var(--background-color);
     padding: 50px;
+    padding-bottom: 200px;
+    padding-top: 100px;
     overflow: hidden;
     gap: 20px;
     width: 100%;
+    transition: background-color 300ms ease-in-out;
 }
 
 .index-double-container{
@@ -310,7 +317,7 @@ a{
 
 
 .index-rich-text-container{
-    background-color: rgba(242, 244, 243, 0.1);
+    background-color: var(--index-background-color);
     padding: 50px;
     border-radius: 10px;
     max-width: 700px;
@@ -319,6 +326,8 @@ a{
     flex-direction: row;
     transform-style: preserve-3d;
     transform: perspective(1000px);
+    color: var(--light-color);
+    transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
 }
 .index-rtc-left{
     transform: translateZ(100px) scale(0.85);
@@ -971,12 +980,19 @@ a{
 /* MOBILE AND IPAD */
 
 @media screen and (max-width: 768px) {
+    .index-main-container{
+        padding: 10px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
     .index-double-container{
         display: flex;
         flex-direction: column;
     }
     .index-rich-text-container{
         flex-direction: column;
+        padding: 25px;
+        width: calc(100% - 50px);
     }
     #burger-menu{
         display: flex;
@@ -1041,7 +1057,7 @@ a{
         padding: 40px 20px;
     }
     .log-reg-main-container{
-        padding: 50px;
+        padding: 40px 20px;
     }
     .log-reg-main-container form{
         padding: 25px;

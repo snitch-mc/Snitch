@@ -182,7 +182,3 @@ const uuidCalculator = () => {
         });
     }
 }
-
-function closeDialog(){
-    document.getElementById("error-dialog").setAttribute("data-state", "hidden");
-}

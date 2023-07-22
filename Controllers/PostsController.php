@@ -9,6 +9,11 @@ class PostsController extends Controller
 {
     public function index()
     {
+        //On vérifie si l'utilisateur est connecté
+        if (!isset($_SESSION["user"])){
+            header("Location: /users/login");
+            exit();
+        }
         //On instancie le modèle correspondant à la table "posts"
         $postsModel = new PostsModel();
 
