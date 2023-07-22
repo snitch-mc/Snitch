@@ -1,6 +1,7 @@
 <?php
 $title = "Signaler";
 $description = "Page pour signaler les joueurs.";
+var_dump($_POST);
 ?>
 <div class="report-main-container">
     <div class="report-panel-container">
@@ -17,7 +18,7 @@ $description = "Page pour signaler les joueurs.";
 
                 <div class="form-div-input">
                     <label for="minecraftuuid">Minecraft UUID</label>
-                    <input type="text" name="minecraftuuid" id="minecraftuuid" placeholder="45c25d2e-2519-49d3-8445-5c65cc6c3c05" required>
+                    <input type="text" name="minecraftuuid" id="minecraftuuid" placeholder="45c25d2e-2519-49d3-8445-5c65cc6c3c05" required readonly>
                     <input type="button" value="Find UUID" id="uuidbutton" onclick="uuidCalculator()">
                 </div>
                 <!--

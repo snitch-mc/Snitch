@@ -71,19 +71,25 @@ class PostsController extends Controller
                 }
             }
 
-            //Je check s'il s'agit bien d'un UUID Minecraft
-            $uuid = $_POST["minecraftuuid"];
-            if (!preg_match('/^[A-F\d]{8}-[A-F\d]{4}-4[A-F\d]{3}-[89AB][A-F\d]{3}-[A-F\d]{12}$/i', $uuid)){
-                $_SESSION["errorMessage"] = "Merci de fournir un UUID valide tel qu'affiché dans la box. Si vous ne trouvez pas, utilisez la fonction FIND UUID.";
-                $error = true;
+            if (!empty($_POST["minecraftuuid"])){
+                //Je check s'il s'agit bien d'un UUID Minecraft
+                $uuid = $_POST["minecraftuuid"];
+                if (!preg_match('/^[A-F\d]{8}-[A-F\d]{4}-4[A-F\d]{3}-[89AB][A-F\d]{3}-[A-F\d]{12}$/i', $uuid)){
+                    $_SESSION["errorMessage"] = "Merci de fournir un UUID valide tel qu'affiché dans la box. Si vous ne trouvez pas, utilisez la fonction FIND UUID.";
+                    $error = true;
+                }
             }
 
-            //Je check s'il s'agit bien d'un username minecraft
-            $username = $_POST["minecraft"];
-            if (!preg_match("/^[a-zA-Z0-9_]{2,16}$/", $username)){
-                $_SESSION["errorMessage"] = "Merci de fournir un pseudo minecraft valide.";
-                $error = true;
+
+            if (!empty($_POST["minecraft"])){
+                //Je check s'il s'agit bien d'un username minecraft
+                $username = $_POST["minecraft"];
+                if (!preg_match("/^[a-zA-Z0-9_]{2,16}$/", $username)){
+                    $_SESSION["errorMessage"] = "Merci de fournir un pseudo minecraft valide.";
+                    $error = true;
+                }
             }
+
 
 
             //Si je n'ai pas d'erreur on peut enregistrer le post

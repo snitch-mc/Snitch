@@ -7,7 +7,6 @@ $description = "Signalez, protégez, jouez. La plateforme essentielle pour les a
     <video autoplay loop muted plays-inline class="hero-video">
         <source src="/assets/videos/bg.webm" type="video/webm">
     </video>
-    <!-- <a href="https://youtu.be/FqnAV6tkwzA" target=”_blank” id="chill-button"> CHILL</a> -->
     <div class="hero-text">
         <p class="hero-title">SNITCH</p>
         <p class="hero-description">Signalez, protégez, jouez. La plateforme essentielle pour les administrateurs de serveurs.</p>
@@ -19,7 +18,7 @@ $description = "Signalez, protégez, jouez. La plateforme essentielle pour les a
         <?php elseif (isset($_SESSION["alreadyLogged"]) && !isset($_SESSION["user"])): ?>
             <a class="hero-button" href="/users/login" >Connexion</a>
         <?php else: ?>
-            <a class="hero-button" href="/posts" >Liste</a>
+            <a class="hero-button" href="/posts">Liste</a>
         <?php endif; ?>
         <a class="hero-button" href="/posts/add">Dénoncer</a>
     </div>
