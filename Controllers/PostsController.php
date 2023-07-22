@@ -55,7 +55,7 @@ class PostsController extends Controller
 
         //On vérifie si l'utilisateur a la permission
         if ($_SESSION["user"]["permissions"] > 2){
-            $_SESSION["errorMessage"] = "Tu n'as pas la permission de signaler des joueurs. Si tu penses que c'est une erreur, contacte l'administration.";
+            $_SESSION["errorMessage"] = "Tu n'as pas la permission de signaler des joueurs. Tu dois être gérant de serveur au minimum.";
             header("Location: /");
             exit();
         }
