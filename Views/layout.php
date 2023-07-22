@@ -16,6 +16,7 @@
         <meta content="" property="og:image">
         <meta name="twitter:card" content="summary_large_image">
         <meta content="#5661F5" data-react-helmet="true" name="theme-color">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <!-- NAVBAR -->
     <div class="navbar">
@@ -58,6 +59,7 @@
         <p style="margin-top: 10px;">Snitch is not affiliated with Mojang.</p>
     </div>
     <script src="/js/main.js"></script>
+    <script src="/js/vanilla-tilt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
     <script>
         // Vérifie si le message d'erreur est défini dans la session

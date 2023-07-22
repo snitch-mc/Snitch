@@ -1,13 +1,18 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\UsersModel;
 use App\Models\WebsiteModel;
 
 class MainController extends Controller
 {
     public function index()
     {
-        $this->render('main/index');
+        $usersModel = new UsersModel();
+        $numberUsers = $usersModel->findNumberOfRegistered();
+
+
+        $this->render('main/index', ['numberUsers' => $numberUsers]);
 
     }
     public function error()

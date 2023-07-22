@@ -111,14 +111,10 @@ class UsersModel extends Model
         return $this->customQuery("SELECT * FROM {$this->table} WHERE id = ?", [$id])->fetch();
     }
 
-
-
-
-
-
-
-
-
+    public function findNumberOfRegistered()
+    {
+        return $this->customQuery('SELECT COUNT(*) AS total FROM ' . $this->table)->fetch();
+    }
 
 
 
