@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\PostsModel;
 use App\Models\UsersModel;
 use App\Models\WebsiteModel;
 
@@ -8,11 +9,11 @@ class MainController extends Controller
 {
     public function index()
     {
-        $usersModel = new UsersModel();
-        $numberUsers = $usersModel->findNumberOfRegistered();
+        $postsModel = new PostsModel();
+        $numberReports = $postsModel->findNumberOfReports();
 
 
-        $this->render('main/index', ['numberUsers' => $numberUsers]);
+        $this->render('main/index', ['numberReports' => $numberReports]);
 
     }
     public function error()

@@ -45,11 +45,11 @@ $description = "Signalez, protégez, jouez. La plateforme essentielle pour les a
                 <p>Pour avoir accès à la partie "Signaler" du site web vous devrez contacter l'admin du site.</p>
             </div>
         </div>
-        <div class="index-rich-text-container" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.4" style="cursor: pointer; display: flex; align-items: center; justify-content: center" onclick="window.location.href='/users/register'">
+        <div class="index-rich-text-container" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.4" style="display: flex; align-items: center; justify-content: center">
             <div class="index-rtc-left animate-on-scroll">
-                <h3 style="text-align: center">Rejoins les </h3>
                 <h3 id="numberUsersDisplay" style="font-size: 6rem; text-align: center; margin-top: 10px" >0</h3>
-                <h3 style="text-align: center">membres inscrits sur Snitch !</h3>
+                <h3 style="text-align: center">Signalements</h3>
+                <p style="text-align: center">faits sur Snitch !</p>
             </div>
         </div>
 
@@ -95,7 +95,7 @@ $description = "Signalez, protégez, jouez. La plateforme essentielle pour les a
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const element = entry.target;
-                    const endValue = <?= $data["numberUsers"]->total ?>; // Récupérez la valeur depuis le contenu de l'élément
+                    const endValue = <?= $data["numberReports"]->total ?>; // Récupérez la valeur depuis le contenu de l'élément
                     animateNumber(0, endValue, 2500); // 5000 ms (5 secondes) pour l'animation
                     observer.unobserve(element); // Une fois l'animation lancée, arrêtez d'observer cet élément
                 }

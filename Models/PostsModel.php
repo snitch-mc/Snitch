@@ -187,4 +187,9 @@ class PostsModel extends Model
         $req = $this->customQuery('SELECT * FROM ' . $this->table . ' ORDER BY created_at DESC');
         return $req->fetchAll();
     }
+
+    public function findNumberOfReports()
+    {
+        return $this->customQuery('SELECT COUNT(*) AS total FROM ' . $this->table)->fetch();
+    }
 }
