@@ -30,6 +30,10 @@
     --index-background-color: rgba(29, 29, 29, 1);
     --index-text-color: rgba(29, 29, 29, 1);
 }
+::selection {
+    color: var(--main-color);
+    background: var(--light-color);
+}
 
 .dark-mode{
     --background-color: var(--dark-color);
@@ -259,7 +263,7 @@ a{
 
 .hero-button{
     text-align: center;
-    padding: 10px 20px;
+    padding: 15px 20px;
     background-color: var(--main-color);
     border-radius: 5px;
     transition: padding 300ms ease-in-out, opacity 300ms ease-in-out;
@@ -267,12 +271,12 @@ a{
 }
 
 .hero-buttons:has(.hero-button:hover) > .hero-button:not(:hover){
-    padding: 10px;
+    padding: 15px 10px;
     opacity: 0.5;
 }
 
 .hero-button:hover{
-    padding: 10px 30px;
+    padding: 15px 30px;
 }
 
 
@@ -644,6 +648,33 @@ a{
     font-size: 2rem;
 }
 
+.log-reg-error-msg{
+    font-family: Minecraft;
+    font-weight: 200;
+    color: darkred;
+    text-align: center;
+    font-style: italic;
+    max-width: 320px;
+    font-size: 0.7rem;
+    margin-top: 5px;
+    background-color: var(--light-color);
+    padding: 4px 8px;
+    border-radius: 3px;
+    opacity: 1;
+    transition: opacity 600ms ease-in-out 100ms, display 0ms;
+    pointer-events: none;
+    user-select: none;
+    max-width: 192px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hidden{
+    display: none;
+    opacity: 0;
+}
+
 .log-reg-field{
     margin-top: 25px;
     display: flex;
@@ -660,8 +691,12 @@ a{
     font-family: Minecraft;
     letter-spacing: 0.05rem;
     padding: 6px;
-    transition: transform 300ms ease-out, background 300ms ease-out, opacity 300ms ease-out;
+    transition: transform 300ms ease-out, background 300ms ease-out, opacity 300ms ease-out, border-bottom-color 300ms ease-in-out;
 }
+.incorrect{
+    border-bottom-color: red;
+}
+
 .log-reg-input:active{
     transform: scale(0.98) translateX(-2px);
     background: var(--light-color);
@@ -676,6 +711,7 @@ a{
     color: var(--light-color);
     opacity: 0.5;
 }
+
 .log-reg-submit{
     background-color: var(--light-color);
     border: none;
@@ -684,7 +720,7 @@ a{
     font-family: Minecraft;
     color: var(--dark-color);
     cursor: pointer;
-    transition: color 300ms ease-in-out, background-color 300ms ease-in-out, transform 300ms ease-in-out, box-shadow 300ms ease-in-out;
+    transition: color 300ms ease-in-out, background-color 300ms ease-in-out, transform 300ms ease-in-out, box-shadow 300ms ease-in-out, opacity 300ms ease-in-out;
 }
 .log-reg-submit:hover{
     background-color: var(--dark-color);
@@ -692,6 +728,10 @@ a{
     transform: translateY(2px) scale(0.99);
     -webkit-box-shadow: 0px 5px 15px 0px black;
     box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.5);
+}
+
+.log-reg-submit[disabled]{
+    opacity: 0.3;
 }
 
 .log-reg-logout{
