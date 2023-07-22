@@ -618,6 +618,7 @@ a{
     background-color: var(--background-color);
     padding: 100px;
     box-sizing: border-box;
+    transition: background-color 300ms ease-in-out;
 }
 .log-reg-main-container form{
     display: flex;
