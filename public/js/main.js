@@ -2,6 +2,8 @@
 let burgerButton = document.getElementById("burger-menu");
 let torchPointer = document.getElementById('torch-pointer');
 let menuOpen = false;
+let logRegSubmit = document.getElementById("log-reg-submit");
+let logRegErrorMsg = document.getElementById("log-reg-error-msg");
 
 const openNameMC = (info) => {
     window.open('https://www.namemc.com/profile/'+info, '_blank');
@@ -123,8 +125,6 @@ const uuidCalculator = () => {
     
     if (/^[a-zA-Z0-9_]{2,16}$/mg.test(username) == true){
 
-        console.log("'"+ username + "' est un pseudo Minecraft.\n\nL'API Minecraft va être contactée...");
-        console.log("...");
 
         var url = "https://playerdb.co/api/player/minecraft/" + username;
 
@@ -139,9 +139,6 @@ const uuidCalculator = () => {
               let obj = JSON.parse(json);
 
               if (obj.success === true){
-
-                console.log(obj.data.player.id);
-                console.log(obj.data.player.raw_id);
 
 
                 usernameInput.value = obj.data.player.username;
@@ -160,7 +157,7 @@ const uuidCalculator = () => {
                   //alert("Impossible de trouver le joueur dans la DB.\n\nVérifiez sur NameMC\nhttps://fr.namemc.com/profile/" + username);
                   Swal.fire({
                       icon: 'warning', // Icône d'avertissement
-                      title: 'Confirmation', // Titre de la boîte de dialogue
+                      title: 'Joueur introuvable', // Titre de la boîte de dialogue
                       text: "Impossible de trouver le joueur dans la DB.\n\nVérifiez sur NameMC", // Message personnalisé
                       confirmButtonText: 'OK', // Texte du bouton de confirmation
                       footer: `<a href="https://fr.namemc.com/profile/`+username+`" target="_blank">Vérifier sur NameMC</a>`
@@ -174,11 +171,77 @@ const uuidCalculator = () => {
         
 
     } else {
-        Swal.fire({
-            icon: 'warning', // Icône d'avertissement
-            title: 'Confirmation', // Titre de la boîte de dialogue
-            text: "'"+ username + "' n'est pas un pseudo Minecraft.\n\nContrôles et réessaies.", // Message personnalisé
-            confirmButtonText: 'OK', // Texte du bouton de confirmation
-        });
+        if (username === ""){
+            Swal.fire({
+                icon: 'warning', // Icône d'avertissement
+                title: 'Joueur vide', // Titre de la boîte de dialogue
+                text: "Donne au moins un pseudo... Sinon ça va être difficile.", // Message personnalisé
+                confirmButtonText: 'OK', // Texte du bouton de confirmation
+            });
+        } else {
+            Swal.fire({
+                icon: 'warning', // Icône d'avertissement
+                title: 'Pas un pseudo', // Titre de la boîte de dialogue
+                text: "'"+ username + "' n'est pas un pseudo Minecraft.\n\nContrôles et réessaies.", // Message personnalisé
+                confirmButtonText: 'OK', // Texte du bouton de confirmation
+            });
+        }
+
+    }
+}
+const checkUsername = (element) => {
+    if (/^[a-zA-Z0-9_]{2,16}$/mg.test(element.value)) {
+        element.classList.remove("incorrect")
+        logRegSubmit.removeAttribute("disabled")
+        logRegErrorMsg.classList.add("hidden")
+    } else {
+        element.classList.add("incorrect")
+        logRegSubmit.setAttribute("disabled", "")
+        logRegErrorMsg.textContent = "Pseudo invalide. Minimum 2 caractères, maximum 16."
+        logRegErrorMsg.classList.remove("hidden")
+    }
+}
+
+const checkMail = (element) => {
+    if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(element.value)) {
+        element.classList.remove("incorrect")
+        logRegSubmit.removeAttribute("disabled")
+        logRegErrorMsg.classList.add("hidden")
+    } else {
+        element.classList.add("incorrect")
+        logRegSubmit.setAttribute("disabled", "")
+        logRegErrorMsg.textContent = "Email invalide."
+        logRegErrorMsg.classList.remove("hidden")
+    }
+}
+
+const checkPassword = (element) => {
+    if (element.value.length >= 8) {
+        element.classList.remove("incorrect")
+        logRegSubmit.removeAttribute("disabled")
+        logRegErrorMsg.classList.add("hidden")
+    } else {
+        element.classList.add("incorrect")
+        logRegSubmit.setAttribute("disabled", "")
+        logRegErrorMsg.textContent = "Mot de passse invalide. Minimum 8 caractères."
+        logRegErrorMsg.classList.remove("hidden")
+    }
+}
+
+const checkConfirmPassword = (element) => {
+    if (element.value === document.querySelector("#password").value && element.value != ""){
+        element.classList.remove("incorrect")
+        logRegSubmit.removeAttribute("disabled")
+        logRegErrorMsg.classList.add("hidden")
+    } else if (element.value === ""){
+        element.classList.add("incorrect")
+        logRegSubmit.setAttribute("disabled", "")
+        logRegErrorMsg.textContent = "La confirmation ne peut pas être vide."
+        logRegErrorMsg.classList.remove("hidden")
+    } else {
+        element.classList.add("incorrect")
+        logRegSubmit.setAttribute("disabled", "")
+        logRegErrorMsg.textContent = "Les mots de passe ne correspondent pas."
+        logRegErrorMsg.classList.remove("hidden")
     }
 }

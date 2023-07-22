@@ -22,7 +22,7 @@ $description = "Page de connexion.";
                     </div>
                 </div>
             </div>
-            <button class="log-reg-submit" type="submit"><strong>Se connecter</strong></button>
+            <button class="log-reg-submit" type="submit" id="log-reg-submit"><strong>Se connecter</strong></button>
             <a href="/users/register" style="font-size: 0.7rem; margin-top: 50px">Pas encore inscrit ? Clique ici.</a>
         </div>
 
