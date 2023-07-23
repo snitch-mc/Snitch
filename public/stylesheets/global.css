@@ -671,7 +671,6 @@ a{
     justify-content: center;
 }
 .hidden{
-    display: none;
     opacity: 0;
 }
 
@@ -710,6 +709,22 @@ a{
 .log-reg-input::placeholder{
     color: var(--light-color);
     opacity: 0.5;
+}
+
+.log-reg-pass-checks{
+    margin-top: 5px;
+    font-size: 0.7rem;
+    color: darkred;
+    transition: color 150ms ease-in-out;
+}
+.log-reg-pass-checks::before{
+    content: "❌ ";
+}
+.log-reg-pass-checks[data-state="correct"]{
+    color: var(--dark-color);
+}
+.log-reg-pass-checks[data-state="correct"]::before{
+    content: "✅ ";
 }
 
 .log-reg-submit{

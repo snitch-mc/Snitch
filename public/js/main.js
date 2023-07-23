@@ -245,3 +245,36 @@ const checkConfirmPassword = (element) => {
         logRegErrorMsg.classList.remove("hidden")
     }
 }
+
+// Récupérer le champ de mot de passe
+const passwordInput = document.getElementById('password');
+
+// Ajouter un gestionnaire d'événements pour l'événement "input"
+passwordInput.addEventListener('input', (event) => {
+    // Récupérer la valeur du champ de mot de passe
+    const passwordValue = event.target.value;
+    if (passwordValue.length >= 8) {
+        document.querySelector("#pass-check-char").setAttribute("data-state", "correct")
+
+    } else {
+        document.querySelector("#pass-check-char").removeAttribute("data-state")
+    }
+
+    if (/[!@#$%^&*(),.?":{}|<>]/.test(passwordValue)) {
+        document.querySelector("#pass-check-special").setAttribute("data-state", "correct")
+    } else {
+        document.querySelector("#pass-check-special").removeAttribute("data-state")
+    }
+
+    if (/[A-Z]/.test(passwordValue)) {
+        document.querySelector("#pass-check-upper").setAttribute("data-state", "correct")
+    } else {
+        document.querySelector("#pass-check-upper").removeAttribute("data-state")
+    }
+
+    if (/\d/.test(passwordValue)) {
+        document.querySelector("#pass-check-number").setAttribute("data-state", "correct")
+    } else {
+        document.querySelector("#pass-check-number").removeAttribute("data-state")
+    }
+});

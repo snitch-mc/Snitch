@@ -25,11 +25,20 @@ class UsersController extends Controller
                 $error = true;
             }
 
-            //On vérifie que les mots de passe correspondent
-            if ($_POST["password"] != $_POST["confirmpassword"]) {
-                $_SESSION["errorMessage"] = "Les deux mots de passe ne correspondent pas.";
-                $error = true;
+            if (!empty($_POST["passsword"])){
+                if (!preg_match(`/^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/`, $_POST["password"])){
+                    $_SESSION["errorMessage"] = "Merci de mettre un mot de passe valide.";
+                    $error = true;
+                }
             }
+            if (!empty($_POST["confirmpassword"])){
+                //On vérifie que les mots de passe correspondent
+                if ($_POST["password"] != $_POST["confirmpassword"]) {
+                    $_SESSION["errorMessage"] = "Les deux mots de passe ne correspondent pas.";
+                    $error = true;
+                }
+            }
+
 
             /////////////////////////////////////////////
             /// ICI ON FAIT LES CONTRÔLES DE SECURITE ///

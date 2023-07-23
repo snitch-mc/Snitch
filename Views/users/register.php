@@ -24,6 +24,10 @@ $description = "Page d'inscription.";
                     <div class="log-reg-field">
                         <label class="label" for="password">Mot de passe</label>
                         <input class="log-reg-input" id="password" type="password" name="password" placeholder="Votre mot de passe" onblur="checkPassword(this)">
+                        <p class="log-reg-pass-checks" id="pass-check-char">Au moins 8 lettres</p>
+                        <p class="log-reg-pass-checks" id="pass-check-special">Au moins 1 caractère spécial</p>
+                        <p class="log-reg-pass-checks" id="pass-check-number">Au moins 1 chiffre</p>
+                        <p class="log-reg-pass-checks" id="pass-check-upper">Au moins 1 lettre majuscule</p>
                     </div>
                     <div class="log-reg-field">
                         <label class="label" for="confirmpassword">Confirmer le mot de passe</label>
