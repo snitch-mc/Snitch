@@ -29,6 +29,7 @@ POO (Programmation Orientée Objet) et MVC
 PHP, HTML, CSS, JavaScript et Base de données
 
 API Externes
+
 ## Installation
 Pour installer le CMS sur votre serveur, veuillez suivre ces instructions :
 
