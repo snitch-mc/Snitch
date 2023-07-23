@@ -4,7 +4,7 @@ $description = "Signalez, protégez, jouez. La plateforme essentielle pour les a
 
 ?>
 <div class="hero">
-    <video autoplay loop muted plays-inline class="hero-video">
+    <video autoplay loop muted plays-inline disablePictureInPicture class="hero-video">
         <source src="/assets/videos/bg.webm" type="video/webm">
     </video>
     <div class="hero-text">
