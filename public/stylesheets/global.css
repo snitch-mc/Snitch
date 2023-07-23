@@ -1067,8 +1067,8 @@ a{
         justify-content: center;
         gap: 2px;
         cursor: pointer;
-        padding: 30px;
-        margin: -30px;
+        padding: 20px;
+        margin: -20px;
     }
     .burger-line{
         width: 20px;
