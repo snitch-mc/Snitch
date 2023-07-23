@@ -33,4 +33,6 @@ Pour rappel
 
 _Merci bonne journée !_
 
+_(Ah ! et bonne chance pour toutes les corrections)_
+
 _Zoubisouxxx_
