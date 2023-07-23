@@ -9,6 +9,17 @@ Il existe plusieurs manières de se débarrasser de tout ça, comme le bannissem
 **Snitch répertorie tous les signalements faits par des administrateurs ou modérateurs de serveur dans une base de données et permet aux serveurs s’en servant de chercher si un utilisateur suspect a déjà été dénoncé pour tricherie ou mauvais comportement sur d’autres serveurs.**
 
 Notre but : une communauté Minecraft francophone sûre et agréable.
+
+## Sommaire
+
+- [Fonctionnalités](#fonctionnalités)
+- [Technologies utilisées](#technologies-utilisées)
+- [Installation](#technologies-utilisées)
+- [Permissions](#permissions)
+- [API Externes](#api-externes)
+- [Base de données](#base-de-données)
+- [Fonctionnalités futures](#fonctionnalités-futures)
+
 ## Fonctionnalités
 
 - Création de compte
@@ -116,7 +127,7 @@ Crafatar nous permet d'afficher le skin du joueur en isométrique dans la page S
 ```javascript
 document.getElementById("report-left-player").setAttribute("src", "https://crafatar.com/renders/body/" + obj.data.player.id +"?overlay")
 ```
-## Base de donnée
+## Base de données
 
 ![Schéma de la base de données](https://i.imgur.com/mAeCvWX.png)
 ## Fonctionnalités futures
