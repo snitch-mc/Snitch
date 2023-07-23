@@ -28,6 +28,7 @@
     --footer-height: 82px;
     --background-color: var(--light-color);
     --index-background-color: rgba(29, 29, 29, 1);
+    --error-msg-bg: rgba(242, 244, 243, 0.2);
     --index-text-color: rgba(29, 29, 29, 1);
 }
 ::selection {
@@ -651,14 +652,13 @@ a{
 .log-reg-error-msg{
     font-family: Minecraft;
     font-weight: 200;
-    color: darkred;
-    text-align: center;
+    color: var(--light-color);
+    transition: color 150ms ease-in-out;
+    text-shadow: var(--dark-color) 0px 1px 0px;
     font-style: italic;
-    max-width: 320px;
+    max-width: 350px;
     font-size: 0.7rem;
     margin-top: 5px;
-    background-color: var(--light-color);
-    padding: 4px 8px;
     border-radius: 3px;
     opacity: 1;
     transition: opacity 600ms ease-in-out 100ms, display 0ms;
@@ -669,6 +669,11 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 6px;
+}
+.log-reg-error-msg::before{
+    color: #c83e4d;
+    content: "❌ ";
 }
 .hidden{
     opacity: 0;
@@ -714,17 +719,22 @@ a{
 .log-reg-pass-checks{
     margin-top: 5px;
     font-size: 0.7rem;
-    color: darkred;
-    transition: color 150ms ease-in-out;
+    color: var(--light-color);
+    transition: color 150ms ease-in-out, text-decoration 300ms ease-in-out;
+    text-shadow: var(--dark-color) 0px 1px 0px;
+    opacity: 0.8;
 }
 .log-reg-pass-checks::before{
+    color: #c83e4d;
     content: "❌ ";
 }
-.log-reg-pass-checks[data-state="correct"]{
-    color: var(--dark-color);
-}
 .log-reg-pass-checks[data-state="correct"]::before{
+    color: #66bb6a;
     content: "✅ ";
+}
+.log-reg-pass-checks[data-state="correct"]{
+    opacity: 0.5;
+    text-decoration: line-through;
 }
 
 .log-reg-submit{
