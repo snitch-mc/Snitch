@@ -197,7 +197,7 @@ const checkUsername = (element) => {
     } else {
         element.classList.add("incorrect")
         logRegSubmit.setAttribute("disabled", "")
-        logRegErrorMsg.textContent = "Pseudo invalide. Minimum 2 caractères, maximum 16."
+        logRegErrorMsg.textContent = "Pseudo invalide. Pas de caractères spéciaux."
         logRegErrorMsg.classList.remove("hidden")
     }
 }
@@ -223,7 +223,7 @@ const checkPassword = (element) => {
     } else {
         element.classList.add("incorrect")
         logRegSubmit.setAttribute("disabled", "")
-        logRegErrorMsg.textContent = "Mot de passse invalide. Minimum 8 caractères."
+        logRegErrorMsg.textContent = "Mot de passe invalide."
         logRegErrorMsg.classList.remove("hidden")
     }
 }
