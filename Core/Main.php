@@ -40,7 +40,7 @@ class Main
         }
 
         //On vérifie que uri n'est pas vide et se termine pas un "/"
-        if(!empty($uri) && $uri[-1] === "/"){
+        if(!empty($uri) && $uri[-1] === "/" && $uri !== "/"){
             $uri = substr($uri, 0, -1);
 
             //On envoie un code de redirection
