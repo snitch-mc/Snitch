@@ -1,7 +1,6 @@
 <?php
 $title = "Signaler";
 $description = "Page pour signaler les joueurs.";
-var_dump($_POST);
 ?>
 <div class="report-main-container">
     <div class="report-panel-container">
