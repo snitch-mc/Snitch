@@ -37,7 +37,7 @@ CREATE TABLE `posts` (
   `grief` tinyint(1) NOT NULL DEFAULT 0,
   `xray` tinyint(1) NOT NULL DEFAULT 0,
   `triche` tinyint(1) NOT NULL DEFAULT 0,
-  `informations` varchar(600) NOT NULL,
+  `informations` varchar(350) NOT NULL,
   `user_id` int(11) NOT NULL,
   `reported_user_uuid` varchar(36) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
