@@ -418,6 +418,7 @@ a{
 #report-panel-form input[type="text"]{
     background: none;
     border: none;
+    border-radius: 0;
     border-bottom: var(--light-color) 2px solid;
     color: var(--light-color);
     outline: none;
@@ -448,6 +449,7 @@ a{
     background-color: var(--light-color);
     border: none;
     padding: 10px;
+    border-radius: 0;
     font-family: Minecraft;
     color: var(--dark-color);
     cursor: pointer;
@@ -482,6 +484,7 @@ a{
     cursor: pointer;
     height: 0;
     width: 0;
+    border-radius: 0;
 }
 
 .form-checkmark {
@@ -532,6 +535,7 @@ a{
     font-family: Minecraft;
     color: var(--light-color);
     outline: none;
+    border-radius: 0;
 }
 
 .form-div-input, .form-div-checkmark{
@@ -690,6 +694,7 @@ a{
     background: none;
     border: none;
     border-bottom: var(--light-color) 2px solid;
+    border-radius: 0;
     color: var(--light-color);
     outline: none;
     font-family: Minecraft;
@@ -1122,7 +1127,7 @@ a{
     }
     .report-panel-right{
         width: 100%;
-        padding: 40px 20px;
+        padding: 20px;
     }
     .log-reg-main-container{
         padding: 40px 20px;
