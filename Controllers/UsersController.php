@@ -32,7 +32,7 @@ class UsersController extends Controller
 
             if (!empty($_POST["passsword"])){
                 if (!preg_match(`/^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/`, $_POST["password"])){
-                    $_SESSION["errorMessage"] = "Merci de mettre un mot de passe valide.";
+                    $_SESSION["errorMessage"] = "Merci de mettre un mot de passe valide, tel que renseigné.";
                     $error = true;
                 }
             }
@@ -40,6 +40,13 @@ class UsersController extends Controller
                 //On vérifie que les mots de passe correspondent
                 if ($_POST["password"] != $_POST["confirmpassword"]) {
                     $_SESSION["errorMessage"] = "Les deux mots de passe ne correspondent pas.";
+                    $error = true;
+                }
+            }
+
+            if (!empty($_POST["username"])){
+                if (!preg_match(`/^[a-zA-Z0-9_]{2,16}$/mg`, $_POST["username"])){
+                    $_SESSION["errorMessage"] = "Le nom d'utilisateur n'est pas valide. Minimum 2 caractères, maximum 16. Les caractères spéciaux ne sont pas acceptés non plus.";
                     $error = true;
                 }
             }
@@ -162,8 +169,11 @@ class UsersController extends Controller
                     } else if (strlen($_POST["username"]) > 16){
                         $error = true;
                         $_SESSION["errorMessage"] = "Ce nom d'utilisateur est trop long. Maximum 16 caractères.";
+                    } else if (!preg_match(`/^[a-zA-Z0-9_]{2,16}$/mg`, $_POST["username"])){
+                        $error = true;
+                        $_SESSION["errorMessage"] = "Ce nom d'utilisateur n'est pas valide. Les caractères spéciaux ne sont pas autorisés.";
                     } else {
-                        //Je save les données en protégeant contre les failles
+                        //Je sauvegarde les données en protégeant contre les failles
                         $username = strip_tags($_POST["username"]);
                     }
                 }
@@ -184,13 +194,19 @@ class UsersController extends Controller
 
             //On check s'il veut changer de mot de passe
             if (!empty($_POST["password"])){
-                //L'utilisateur a inscrit un premier password, on check s'il correspond au deuxième password
-                if ($_POST["password"] != $_POST["password-confirm"]){
+                if (!preg_match(`/^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/`, $_POST["password"])){
+                    $_SESSION["errorMessage"] = "Merci de mettre un mot de passe valide. Au minimum 8 caractères, 1 lettre majuscule, 1 nombre et 1 caractère spécial.";
                     $error = true;
-                    $_SESSION["errorMessage"] = "Les deux mots de passe ne correspondent pas.";
                 } else {
-                    $password = password_hash($_POST["password"], PASSWORD_ARGON2ID);
+                    //L'utilisateur a inscrit un premier password, on check s'il correspond au deuxième password
+                    if ($_POST["password"] != $_POST["password-confirm"]){
+                        $error = true;
+                        $_SESSION["errorMessage"] = "Les deux mots de passe ne correspondent pas.";
+                    } else {
+                        $password = password_hash($_POST["password"], PASSWORD_ARGON2ID);
+                    }
                 }
+
             }
 
             //On push ce qui a été changé dans la base de données et dans la session pour mettre à jour directement au rechargement de la page
