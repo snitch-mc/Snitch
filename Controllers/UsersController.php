@@ -9,6 +9,11 @@ class UsersController extends Controller
     {
         $error = false;
 
+        if (isset($_POST["user"])){
+            header("Location: /users/profile");
+            exit();
+        }
+
         //On contrôle que le formulaire n'est pas vide
         if(!empty($_POST)){
             foreach ($_POST as $field => $value){
@@ -78,6 +83,11 @@ class UsersController extends Controller
     {
 
         $error = false;
+
+        if (isset($_POST["user"])){
+            header("Location: /users/profile");
+            exit();
+        }
 
         //On contrôle que le formulaire n'est pas vide
         if(!empty($_POST)){
@@ -211,10 +221,6 @@ class UsersController extends Controller
 
 
             }
-
-
-
-
 
             }
 
