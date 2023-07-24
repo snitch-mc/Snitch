@@ -1156,6 +1156,9 @@ a{
     .profile-main-container{
         padding: 40px 20px;
     }
+    .profile-card{
+        padding: 20px;
+    }
     .hero-404-title, .hero-404-description{
         color: var(--light-color);
         mix-blend-mode: difference;
