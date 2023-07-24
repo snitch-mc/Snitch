@@ -58,7 +58,7 @@ $description = "Page pour signaler les joueurs.";
                 </fieldset>
                 <div class="form-div-input">
                     <label for="description">Informations supplémentaires</label>
-                    <textarea name="description" id="" cols="30" rows="10"></textarea>
+                    <textarea name="description" id="" cols="30" rows="10" maxlength="350"></textarea>
                 </div>
 
                 <input type="submit" value="Soumettre">

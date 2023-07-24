@@ -55,7 +55,7 @@
 
 
     <div class="footer">
-        <p>Copyright ©️ <a href="https://thbo.ch/" target="_blank">WAXIE</a> 2023 - <a href="https://choosealicense.com/licenses/mit/" target="_blank">MIT License</a></p>
+        <p>Copyright © <a href="https://thbo.ch/" target="_blank">WAXIE</a> 2023 - <a href="https://choosealicense.com/licenses/mit/" target="_blank">MIT License</a></p>
         <p style="margin-top: 10px;">Snitch is not affiliated with Mojang.</p>
     </div>
     <script src="/js/main.js"></script>

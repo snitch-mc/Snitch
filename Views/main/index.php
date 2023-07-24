@@ -4,13 +4,17 @@ $description = "Signalez, protégez, jouez. La plateforme essentielle pour les a
 
 ?>
 <div class="hero">
-    <video autoplay loop muted plays-inline disablePictureInPicture class="hero-video">
+    <video autoplay loop muted plays-inline disablePictureInPicture class="hero-video" playsinline webkit-playsinline>
+        <source src="/assets/videos/bg.mp4" type="video/mp4">
         <source src="/assets/videos/bg.webm" type="video/webm">
+        Votre navigateur ne supporte pas la lecture de cette vidéo.
     </video>
     <div class="hero-text">
         <p class="hero-title">SNITCH</p>
         <p class="hero-description">Signalez, protégez, jouez. La plateforme essentielle pour les administrateurs de serveurs.</p>
         <p class="hero-description">Vers une communauté francophone Minecraft plus sûre et agréable.</p>
+        <p class="hero-description" style="margin-top: 50px; font-style: italic;">Informations</p>
+        <p class="hero-description" style="margin-top: 5px; font-style: italic;">« Le site est actuellement en version BETA et la base de données des signalements sera réinitilisée. Créer un compte actuellement vous donnera par défaut les permissions de gérant de serveur. Ces permissions seront plus tard données uniquement aux membres de confiance. C'est à dire que les joueurs inscrits pourront voir la liste des joueurs signalés, mais uniquement les membres de confiance pourront signaler d'autres joueurs. »</p>
     </div>
     <div class="hero-buttons">
         <?php if (!isset($_SESSION["user"]) && !isset($_SESSION["alreadyLogged"])): ?>

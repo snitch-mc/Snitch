@@ -18,7 +18,6 @@ class Main
         $websiteModel = new WebsiteModel();
         $website = $websiteModel->findOneByName("maintenance.enabled");
 
-
         if (isset($website)){
             if ($website->value){
                 if (isset($_SESSION["user"])){
@@ -61,8 +60,6 @@ class Main
             //On met une majuscule, on ajoute le namespace, on ajoute "Controller"
             $controller = '\\App\\Controllers\\' . ucfirst(array_shift($params)) .'Controller';
 
-
-
             //ICI ON CHECK SI LE CONTROLLER EXISTE, SINON RENVOIE 404 OU 500
             if (class_exists($controller)){
                 //J'appelle le contrôleur
@@ -93,9 +90,6 @@ class Main
                 $controller->error();
             }
 
-
-
-
         }else {
             //On a pas de paramètre, on renvoie vers la home (ou 404)
             //On instancie le contrôleur par défaut
@@ -103,6 +97,5 @@ class Main
             //On appelle notre méthode index
             $controller->index();
         }
-
     }
 }

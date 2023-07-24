@@ -1,0 +1,1223 @@
+/* ------------ RESET ------------ */
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+/* ------------ FONTS ------------ */
+
+@font-face {
+    font-family: Minecraft;
+    src: url(../assets/fonts/Minecraft.ttf);
+}
+
+@font-face {
+    font-family: MinecraftBold;
+    src: url(../assets/fonts/MinecraftBold.otf);
+}
+
+/* ------------ GENERAL ------------ */
+:root{
+    --main-color: #5661F5;
+    --second-color: #c83e4d;
+    --light-color: #F2F4F3;
+    --dark-color: #1c1d21;
+    --navbar-height: 78px;
+    --footer-height: 82px;
+    --background-color: var(--light-color);
+    --index-background-color: rgba(29, 29, 29, 1);
+    --error-msg-bg: rgba(242, 244, 243, 0.2);
+    --index-text-color: rgba(29, 29, 29, 1);
+}
+::selection {
+    color: var(--main-color);
+    background: var(--light-color);
+}
+
+.dark-mode{
+    --background-color: var(--dark-color);
+    --index-background-color: rgba(242, 244, 243, 0.1);
+    --index-text-color: rgba(242, 244, 243, 1);
+}
+
+html{
+    font-family: Minecraft;
+    font-weight: 200;
+    color: var(--light-color);
+    background-color: var(--main-color);
+}
+a{
+    color: inherit;
+}
+.augmented-button{
+    --short-dist: 10px;
+    --long-dist: 20px;
+    padding-top: var(--long-dist);
+    padding-bottom: var(--long-dist);
+    padding-left: var(--short-dist);
+    padding-right: var(--short-dist);
+    margin-top: calc(-1 * var(--long-dist));
+    margin-bottom: calc(-1 * var(--long-dist));
+    margin-left: calc(-1 * var(--short-dist));
+    margin-right: calc(-1 * var(--short-dist));
+}
+
+.txt-button{
+    transition: text-shadow 200ms ease-in-out, transform 200ms ease-in-out, opacity 200ms ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.txt-button:hover{
+    transition: text-shadow 200ms ease-in-out, transform 200ms ease-in-out, opacity 200ms ease-in-out;
+    transform: translateY(-2px);
+    text-shadow: 0px 2px 7px rgba(0,0,0,0.5);
+}
+
+#dark-light-switch{
+    filter: invert(98%) sepia(19%) saturate(390%) hue-rotate(73deg) brightness(110%) contrast(91%);filter: invert(98%) sepia(19%) saturate(390%) hue-rotate(73deg) brightness(110%) contrast(91%);
+    width: 20px;
+    height: auto;
+    cursor: pointer;
+    opacity: 1;
+    transition: filter 300ms ease-in-out, transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+#dark-light-switch:hover{
+    opacity: 1;
+    filter: invert(0%) sepia(36%) saturate(4274%) hue-rotate(83deg) brightness(73%) contrast(77%);
+    transform: scale(1.2);
+}
+
+
+.error-dialog{
+    position: fixed;
+    top: calc(var(--navbar-height) - 10px); left: 50vw;
+    z-index: 200;
+    background-color: #c83e4d;
+    border-radius: 10px;
+    padding: 20px;
+    transform: translate(-50%, 0);
+    opacity: 1;
+    transition: opacity 300ms ease-in-out, top 300ms ease-in-out;
+    box-shadow: 5px 5px 10px 5px rgba(29,29,29,0.2);
+    box-sizing: border-box;
+}
+.error-dialog[data-state="hidden"]{
+    top: calc(var(--navbar-height) - 20px);
+    opacity: 0;
+}
+
+.success-message{
+    background-color: green;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    width: content-box;
+}
+
+/* ------------ NAVBAR ------------ */
+
+.navbar{
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-color);
+    z-index: 100;
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.21); 
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.21);
+    transition: box-shadow 1000ms ease-in-out;
+}
+.navbar-container{
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.nav-logo a{
+    font-family: MinecraftBold;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+.nav-user-head{
+    width: 20px;
+    height: auto;
+}
+
+#burger-menu{
+    display: none;
+}
+
+#nav-items{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#nav-items a{
+    opacity: 0.6;
+    font-size: 0.8rem;
+}
+
+#nav-items a:hover{
+    opacity: 1;
+}
+
+.is-active{
+    opacity: 1!important;
+}
+
+/* ------------ FOOTER ------------ */
+.footer{
+    position: relative;
+    background-color: var(--main-color);
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 99;
+}
+
+.footer p{
+    font-size: 1rem;
+    text-align: center;
+}
+
+
+/* ------------ INDEX ------------ */
+
+.hero{
+    height: calc(100dvh - var(--navbar-height));
+    height: calc(100vh - var(--navbar-height));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 60px;
+    box-sizing: border-box;
+    background-color: black;
+    overflow: hidden;
+    gap: 20px;
+}
+
+/* #chill-button{
+    z-index: 1;
+    position: absolute;
+    top: 75px; right: 75px;
+} */
+
+.hero-video{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transform-origin: center center;
+    opacity: 0.4;
+}
+
+@media (min-aspect-ratio: 16/9){
+    .hero-video{
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9){
+    .hero-video{
+        width: auto;
+        height: 100%;
+    }
+}
+
+.hero-text{
+    max-width: 700px;
+    z-index: 2;
+}
+.hero-title{
+    font-family: MinecraftBold;
+    text-transform: uppercase;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-description{
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.hero-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    z-index: 1;
+    gap: 20px;
+}
+
+.hero-button{
+    text-align: center;
+    padding: 15px 20px;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    transition: padding 300ms ease-in-out, opacity 300ms ease-in-out;
+    position: relative;
+}
+
+.hero-buttons:has(.hero-button:hover) > .hero-button:not(:hover){
+    padding: 15px 10px;
+    opacity: 0.5;
+}
+
+.hero-button:hover{
+    padding: 15px 30px;
+}
+
+
+.hero-button::after{
+    position: absolute;
+    top: 52%; right: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+    content: " >";
+    opacity: 0;
+}
+
+.hero-button:hover::after{
+    opacity: 1;
+}
+
+.index-main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    background-color: var(--background-color);
+    padding: 50px;
+    padding-bottom: 200px;
+    padding-top: 100px;
+    overflow: hidden;
+    gap: 20px;
+    width: 100%;
+    transition: background-color 300ms ease-in-out;
+}
+
+.index-double-container{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    max-width: 800px;
+    width: calc(100%);
+}
+
+
+
+.index-rich-text-container{
+    background-color: var(--index-background-color);
+    padding: 50px;
+    border-radius: 10px;
+    max-width: 700px;
+    width: calc(100% - 100px);
+    display: flex;
+    flex-direction: row;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    color: var(--light-color);
+    transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+}
+.index-rtc-left{
+    transform: translateZ(100px) scale(0.85);
+}
+
+.index-rtc-left h3{
+    font-size: 2rem;
+    padding-bottom: 20px;
+
+}
+
+.index-rtc-left p{
+    margin-bottom: 10px;
+    line-height: 20px;
+}
+
+.index-rtc-right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateZ(100px) scale(0.8);
+}
+.index-rtc-right img{
+    width: 200px;
+    height: auto;
+}
+
+/* ------------ REPORT PAGE ------------ */
+
+.report-main-container{
+    min-height: calc(100dvh - var(--navbar-height));
+    min-height: calc(100vh - var(--navbar-height));
+    height: 100%;
+    background-color: var(--background-color);
+    padding: 100px;
+    box-sizing: border-box;
+    transition: background-color 350ms ease-in-out;
+}
+
+.report-panel-container{
+    max-width: 1200px;
+    width: 100%;
+    height: auto;
+    background-color: var(--main-color);
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2); 
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    border: #f2f4f381 2px solid;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.report-panel-left{
+    background: linear-gradient(180deg, rgba(132,132,132,0) 0%, rgba(0,0,0,0.3) 100%);;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.report-panel-right{
+    width: 60%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 100px;
+}
+
+#report-left-player{
+    width: auto;
+    height: 400px;
+}
+
+#report-panel-form{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#report-panel-form input[type="text"]{
+    background: none;
+    border: none;
+    border-radius: 0;
+    border-bottom: var(--light-color) 2px solid;
+    color: var(--light-color);
+    outline: none;
+    font-family: Minecraft;
+    letter-spacing: 0.05rem;
+    padding: 6px;
+    transition: transform 300ms ease-out, background 300ms ease-out, opacity 300ms ease-out;
+}
+
+#report-panel-form input[type="text"]:active{
+    transform: scale(0.98) translateX(-3px);
+    background: var(--light-color);
+    opacity: 0.3;
+    transition: transform 50ms ease-out, background 50ms ease-out, opacity 50ms ease-out;
+}
+#report-panel-form input[type="text"]:focus{
+    outline: var(--light-color) 3px solid;
+    border-bottom: transparent 2px solid;
+
+}
+
+#report-panel-form input[type="text"]::placeholder{
+    color: var(--light-color);
+    opacity: 0.5;
+}
+
+#report-panel-form input[type="button"], #report-panel-form input[type="submit"]{
+    background-color: var(--light-color);
+    border: none;
+    padding: 10px;
+    border-radius: 0;
+    font-family: Minecraft;
+    color: var(--dark-color);
+    cursor: pointer;
+    transition: color 300ms ease-in-out, background-color 300ms ease-in-out, transform 300ms ease-in-out, box-shadow 300ms ease-in-out;
+}
+
+#report-panel-form input[type="button"]:hover,#report-panel-form input[type="submit"]:hover{
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    transform: translateY(2px) scale(0.99);
+    -webkit-box-shadow: 0px 5px 15px 0px black; 
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.5);
+}
+
+.form-label-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.form-label-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    border-radius: 0;
+}
+
+.form-checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    height: 25px;
+    width: 25px;
+    background-color: var(--light-color);
+    transition: background-color 300ms ease-in-out;
+}
+
+.form-label-container:hover input ~ .form-checkmark {
+    background-color: var(--dark-color);
+}
+
+.form-label-container input:checked ~ .form-checkmark {
+    background-color: var(--dark-color);
+}
+
+.form-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.form-label-container input:checked ~ .form-checkmark:after {
+    display: block;
+}
+
+.form-label-container .form-checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--light-color);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#report-panel-form textarea{
+    border: var(--light-color) 2px solid;
+    background-color: transparent;
+    padding: 10px;
+    font-family: Minecraft;
+    color: var(--light-color);
+    outline: none;
+    border-radius: 0;
+}
+
+.form-div-input, .form-div-checkmark{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    border: none;
+}
+.form-div-input{
+    gap: 10px;
+}
+
+
+/* ------------ 404 Page ------------ */
+
+.hero-404{
+    height: calc(100dvh - (var(--navbar-height) + var(--footer-height)));
+    height: calc(100vh - (var(--navbar-height) + var(--footer-height)));
+    background-color: var(--dark-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: none;
+    overflow: hidden;
+}
+
+#torch-pointer{
+    filter: blur(120px);
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    background-color: #ffff97;
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 1;
+    transform: translate(-50%, -80%);
+    transition: opacity 1000ms ease-in-out;
+}
+.hero-404-title, .hero-404-description{
+    color: var(--dark-color);
+}
+.hero-404-torch, .hero-404-title, .hero-404-description{
+    z-index: 3;
+    pointer-events: none;
+    user-select: none;
+}
+
+.hero-404-title{
+    font-family: MinecraftBold;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+/* ------------ Maintenance Page ------------ */
+
+.hero-maintenance{
+    height: calc(100dvh - (var(--navbar-height) + var(--footer-height)));
+    height: calc(100vh - (var(--navbar-height) + var(--footer-height)));
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 350ms ease-in-out;
+}
+
+.maintenance-title, .maintenance-description{
+    mix-blend-mode: difference;
+    color: var(--light-color);
+}
+
+.maintenance-title{
+    font-family: MinecraftBold;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+/* ------------ Login/Register Page ------------ */
+.log-reg-main-container{
+    min-height: calc(100dvh - var(--navbar-height));
+    min-height: calc(100vh - var(--navbar-height));
+    height: 100%;
+    background-color: var(--background-color);
+    padding: 100px;
+    box-sizing: border-box;
+    transition: background-color 300ms ease-in-out;
+}
+.log-reg-main-container form{
+    display: flex;
+    background-color: var(--main-color);
+    margin: 0 auto;
+    padding: 50px;
+    width: fit-content;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    border: #f2f4f381 2px solid;
+    box-sizing: border-box;
+}
+.log-reg-header-content-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.log-reg-header{
+    margin-bottom: 20px;
+    font-family: MinecraftBold;
+    font-size: 2rem;
+}
+
+.log-reg-error-msg{
+    font-family: Minecraft;
+    font-weight: 200;
+    color: var(--light-color);
+    transition: color 150ms ease-in-out;
+    text-shadow: var(--dark-color) 0px 1px 0px;
+    font-style: italic;
+    max-width: 350px;
+    font-size: 0.7rem;
+    margin-top: 5px;
+    border-radius: 3px;
+    opacity: 1;
+    transition: opacity 600ms ease-in-out 100ms, display 0ms;
+    pointer-events: none;
+    user-select: none;
+    max-width: 192px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+.log-reg-error-msg::before{
+    color: #c83e4d;
+    content: "❌ ";
+}
+.hidden{
+    opacity: 0;
+}
+
+.log-reg-field{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+.log-reg-input{
+    background: none;
+    border: none;
+    border-bottom: var(--light-color) 2px solid;
+    border-radius: 0;
+    color: var(--light-color);
+    outline: none;
+    font-family: Minecraft;
+    letter-spacing: 0.05rem;
+    padding: 6px;
+    transition: transform 300ms ease-out, background 300ms ease-out, opacity 300ms ease-out, border-bottom-color 300ms ease-in-out;
+}
+.incorrect{
+    border-bottom-color: red;
+}
+
+.log-reg-input:active{
+    transform: scale(0.98) translateX(-2px);
+    background: var(--light-color);
+    opacity: 0.3;
+    transition: transform 50ms ease-out, background 50ms ease-out, opacity 50ms ease-out;
+}
+.log-reg-input:focus{
+    outline: var(--light-color) 3px solid;
+    border-bottom: transparent 2px solid;
+}
+.log-reg-input::placeholder{
+    color: var(--light-color);
+    opacity: 0.5;
+}
+
+.log-reg-pass-checks{
+    margin-top: 5px;
+    font-size: 0.7rem;
+    color: var(--light-color);
+    transition: color 150ms ease-in-out, text-decoration 300ms ease-in-out;
+    text-shadow: var(--dark-color) 0px 1px 0px;
+    opacity: 0.8;
+}
+.log-reg-pass-checks::before{
+    color: #c83e4d;
+    content: "❌ ";
+}
+.log-reg-pass-checks[data-state="correct"]::before{
+    color: #66bb6a;
+    content: "✅ ";
+}
+.log-reg-pass-checks[data-state="correct"]{
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.log-reg-submit{
+    background-color: var(--light-color);
+    border: none;
+    padding: 10px;
+    margin-top: 25px;
+    font-family: Minecraft;
+    color: var(--dark-color);
+    cursor: pointer;
+    transition: color 300ms ease-in-out, background-color 300ms ease-in-out, transform 300ms ease-in-out, box-shadow 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+.log-reg-submit:hover{
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    transform: translateY(2px) scale(0.99);
+    -webkit-box-shadow: 0px 5px 15px 0px black;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.5);
+}
+
+.log-reg-submit[disabled]{
+    opacity: 0.3;
+}
+
+.log-reg-logout{
+
+}
+
+/* ------------ PROFILE ------------ */
+
+.profile-main-container{
+    min-height: calc(100dvh - var(--navbar-height));
+    min-height: calc(100vh - var(--navbar-height));
+    height: 100%;
+    background-color: var(--background-color);
+    padding: 100px;
+    box-sizing: border-box;
+    transition: background-color 350ms ease-in-out;
+}
+.profile-card{
+    padding: 50px;
+    background-color: var(--main-color);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    border: #f2f4f381 2px solid;
+    box-sizing: border-box;
+}
+.profile-header-username{
+    font-family: MinecraftBold;
+    font-size: 2rem;
+}
+.profile-header-role{
+    margin-bottom: 70px;
+    font-style: italic;
+    opacity: 0.7;
+}
+.profile-card-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.profile-head{
+    border: var(--light-color) solid 4px;
+    position: absolute;
+    top: 50px; right: 50px;
+}
+
+/* ------------ LISTE ------------ */
+.list-main-container{
+    min-height: calc(100dvh - var(--navbar-height));
+    min-height: calc(100vh - var(--navbar-height));
+    height: 100%;
+    background-color: var(--background-color);
+    padding: 100px;
+    box-sizing: border-box;
+    transition: background-color 350ms ease-in-out;
+}
+.list-table{
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.list-cell{
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 0.5fr;
+    grid-auto-rows: 1fr;
+    grid-gap: 30px;
+    align-items: center;
+    background-color: var(--main-color);
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    border: #f2f4f381 2px solid;
+    box-sizing: border-box;
+}
+
+.list-cell-player{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.list-cell-control{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.control-button{
+    padding: 8px 16px;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    width: fit-content;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: unset;
+    border: unset;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: inherit;
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+}
+
+.control-button:hover{
+    color: var(--light-color);
+    background-color: var(--dark-color);
+}
+
+.control-button[data-state="urgent"]:hover{
+    background-color: #ff0000;
+}
+
+.control-button[data-state="warning"]:hover{
+    color: var(--dark-color);
+    background-color: yellow;
+}
+
+.list-cell-reasons-container{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    gap: 10px;
+}
+.list-cell-reason{
+    padding: 4px 8px;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    border-radius: 4px;
+    opacity: 0.2;
+}
+
+.list-cell-reason[data-state="active"]{
+    opacity: 1;
+    color: var(--light-color);
+    background-color: #ff0000;
+}
+
+.list-more-card{
+    padding: 50px;
+    background-color: var(--main-color);
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    border: #f2f4f381 2px solid;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.list-more-card-left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.list-mcr-playertag{
+    padding: 5px 10px;
+    background-color: rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+}
+
+.list-more-card-right{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.list-mcr-reported-by{
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+.list-mcr-reported-user{
+    font-family: MinecraftBold;
+    font-size: 3rem;
+}
+
+.list-mcr-control-container{
+    margin-top: 100px;
+}
+
+/* ------------ SETTINGS PAGE ------------ */
+
+.settings-main-container{
+    min-height: calc(100dvh - var(--navbar-height));
+    min-height: calc(100vh - var(--navbar-height));
+    height: 100%;
+    background-color: var(--background-color);
+    padding: 100px;
+    box-sizing: border-box;
+    transition: background-color 350ms ease-in-out;
+}
+
+.settings-card-container{
+    padding: 50px;
+    background-color: var(--main-color);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    border: #f2f4f381 2px solid;
+    box-sizing: border-box;
+}
+
+.settings-title{
+    font-family: Minecraft;
+    font-weight: bold;
+    font-size: 1.7rem;
+    margin-bottom: 50px;
+}
+
+.settings-input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 30px;
+}
+
+
+.toggle-container{
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Styles de base pour le bouton de type activé/désactivé */
+.toggle {
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    height: 34px;
+    z-index: 10;
+}
+
+/* Cacher l'élément <input> */
+.toggle input {
+    display: none;
+}
+
+/* Styles pour le bouton d'arrière-plan (état désactivé) */
+.toggle label {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 17px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+/* Styles pour le bouton d'arrière-plan (état activé) */
+.toggle label::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    transition: transform 0.3s;
+}
+
+/* Styles pour le bouton lorsque l'état est activé */
+.toggle input:checked + label {
+    background-color: #66bb6a;
+}
+
+/* Styles pour le bouton (cercle) lorsqu'il est activé */
+.toggle input:checked + label::before {
+    transform: translateX(26px);
+}
+
+
+/* MOBILE AND IPAD */
+
+@media screen and (max-width: 768px) {
+    .index-main-container{
+        padding: 10px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .index-double-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .index-rich-text-container{
+        flex-direction: column;
+        padding: 25px;
+        width: calc(100% - 50px);
+    }
+    #burger-menu{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        cursor: pointer;
+        padding: 20px;
+        margin: -20px;
+    }
+    .burger-line{
+        width: 20px;
+        height: 3px;
+        background-color: var(--light-color);
+        transition: height 100ms ease-in-out 300ms, transform 150ms ease-in-out;
+    }
+    #burger-menu[data-state="open"] .burger-line{
+        transition: height 100ms ease-in-out, transform 400ms ease-in-out 300ms;
+    }
+    #burger-menu[data-state="open"] #bl-second{
+        height: 0px;
+    }
+    #burger-menu[data-state="open"] #bl-first{
+        transform: translate(0, 3px) rotate(225deg);
+    }
+    #burger-menu[data-state="open"] #bl-third{
+        transform: translate(0, -4px) rotate(-45deg);
+    }
+
+    #nav-items{
+        overflow: hidden;
+        position: absolute;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        top: var(--navbar-height);
+        left: 0px;
+        height: calc(100dvh - var(--navbar-height));
+        height: calc(100vh - var(--navbar-height));
+        width: 100%;
+        background-color: var(--main-color);
+        transition: height 300ms ease-in-out;
+    }
+    #nav-items a{
+        font-size: 1rem;
+    }
+    #nav-items[data-state="close"]{
+        height: 0px;
+    }
+    .txt-button{
+        --txt-dist: 20px;
+        margin-top: -5px;
+        margin-bottom: -5px;
+    }
+    .report-main-container{
+        padding: 40px 20px;
+    }
+    .report-panel-left{
+        display: none;
+    }
+    .report-panel-right{
+        width: 100%;
+        padding: 20px;
+    }
+    .log-reg-main-container{
+        padding: 40px 20px;
+    }
+    .log-reg-main-container form{
+        padding: 25px;
+    }
+    .profile-card-container{
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    .profile-header-role {
+        margin-bottom: 20px;
+    }
+    .profile-head{
+        position: unset;
+    }
+    .list-main-container{
+        padding: 40px 20px;
+    }
+    .list-more-card{
+        padding: 0px;
+    }
+    .list-more-card-right{
+        padding: 20px;
+    }
+    .list-more-card-left{
+        display: none;
+    }
+    .profile-main-container{
+        padding: 40px 20px;
+    }
+    .profile-card{
+        padding: 20px;
+    }
+    .hero-404-title, .hero-404-description{
+        color: var(--light-color);
+        mix-blend-mode: difference;
+    }
+    #torch-pointer{
+        display: none;
+    }
+    .hero-404{
+        background-color: var(--background-color);
+    }
+}
+
+@media screen and (max-width: 1250px){
+    #list-cell-show{
+        display: none;
+    }
+    .list-cell{
+        grid-template-columns: 1fr 4fr;
+        grid-auto-rows: 2fr 1fr;
+        grid-template-areas:
+                        "a b"
+                        "c d";
+    }
+    .list-cell-control{
+        flex-direction: row;
+        flex-wrap: wrap;
+        grid-area: d;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .list-cell {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 1fr 3fr 3fr 1fr;
+        grid-template-areas:
+    "a"
+    "b"
+    "c"
+    "d";
+    }
+    .list-cell-control{
+        flex-direction: row;
+        flex-wrap: wrap;
+        grid-area: c;
+    }
+    .list-cell-reasons-container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 10px;
+        gap: 10px;
+    }
+    .list-mcr-reported-user{
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+}

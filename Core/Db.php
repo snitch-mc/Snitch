@@ -6,8 +6,6 @@ use PDOException;
 //Renommez le fichier cred_example en credentials.php puis remplissez les données correctement
 require_once "credentials.php";
 
-
-
 class Db extends PDO
 {
     //Instance unique de la classse
@@ -46,6 +44,4 @@ class Db extends PDO
         }
         return self::$instance;
     }
-
-
 }

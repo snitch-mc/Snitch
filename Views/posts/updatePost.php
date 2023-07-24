@@ -58,7 +58,7 @@ $description = "Éditer un signalement déjà envoyé.";
                 </fieldset>
                 <div class="form-div-input">
                     <label for="description">Informations supplémentaires</label>
-                    <textarea name="description" id="" cols="30" rows="10"><?=$data[0]->informations?></textarea>
+                    <textarea name="description" id="" cols="30" rows="10" maxlength="350"><?=$data[0]->informations?></textarea>
                 </div>
 
                 <input type="submit" value="Mettre à jour">

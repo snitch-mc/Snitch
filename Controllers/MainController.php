@@ -12,7 +12,6 @@ class MainController extends Controller
         $postsModel = new PostsModel();
         $numberReports = $postsModel->findNumberOfReports();
 
-
         $this->render('main/index', ['numberReports' => $numberReports]);
 
     }
@@ -27,6 +26,5 @@ class MainController extends Controller
         $website = $websiteModel->findAll();
         $this->render('main/maintenance', $website);
     }
-
 
 }
