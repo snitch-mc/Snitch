@@ -4,8 +4,10 @@ $description = "Signalez, protégez, jouez. La plateforme essentielle pour les a
 
 ?>
 <div class="hero">
-    <video autoplay loop muted plays-inline disablePictureInPicture class="hero-video">
+    <video autoplay loop muted plays-inline disablePictureInPicture class="hero-video" playsinline webkit-playsinline>
+        <source src="/assets/videos/bg.mp4" type="video/mp4">
         <source src="/assets/videos/bg.webm" type="video/webm">
+        Votre navigateur ne supporte pas la lecture de cette vidéo.
     </video>
     <div class="hero-text">
         <p class="hero-title">SNITCH</p>
