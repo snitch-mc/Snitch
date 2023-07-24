@@ -281,14 +281,22 @@ class PostsController extends Controller
     //Logique pour afficher uniquement le début du contenu du post
     public static function shortContent(string $content, int $limit = 100)
     {
-        //Si la longueur du texte est plus petite ou égale à la limit, on ne fait rien
-        if(strlen($content) <= $limit) {
+        // Si la longueur du texte est plus petite ou égale à la limite, on ne fait rien
+        if (strlen($content) <= $limit) {
             return $content;
         }
-            //On cherche le premier espace après la limite
+
+        // On cherche le premier espace après la limite
         $lastSpace = strpos($content, ' ', $limit);
-        //On retourne la phrase coupée au bon endroit et on met "..."
+
+        // Si pas d'espace trouvé après la limite, on coupe le texte à la limite
+        if ($lastSpace === false) {
+            return substr($content, 0, $limit) . "...";
+        }
+
+        // On retourne la phrase coupée au bon endroit et on met "..."
         return substr($content, 0, $lastSpace) . "...";
     }
+
 
 }
