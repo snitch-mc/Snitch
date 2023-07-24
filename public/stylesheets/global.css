@@ -1144,6 +1144,12 @@ a{
     .list-main-container{
         padding: 40px 20px;
     }
+    .list-more-card{
+        padding: 0px;
+    }
+    .list-more-card-right{
+        padding: 20px;
+    }
     .list-more-card-left{
         display: none;
     }
