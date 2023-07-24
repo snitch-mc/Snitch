@@ -90,8 +90,6 @@ class PostsController extends Controller
                 }
             }
 
-
-
             //Si je n'ai pas d'erreur on peut enregistrer le post
             if (!$error) {
                 //Je protège les données contre les failles
@@ -105,7 +103,6 @@ class PostsController extends Controller
                 $postModel->setReportedUserUuid($uuid);
                 $postModel->setInformations($informations);
                 $postModel->setUserId($_SESSION["user"]["id"]);
-
 
                 //On check les raisons et si elles sont définies, on hydrate le boolean 1
                 if ($_POST["comportement"] === "on"){
@@ -123,7 +120,6 @@ class PostsController extends Controller
                 if ($_POST["triche"] === "on"){
                     $postModel->setTriche(1);
                 }
-
 
                 $postModel->create($postModel);
 
@@ -234,7 +230,6 @@ class PostsController extends Controller
                     $postUpdated->setTriche(0);
                 }
 
-
                 //On hydrate sans oublier l'id du post
                 $postUpdated->setId($post->id);
                 $postUpdated->setInformations($informations);
@@ -274,8 +269,6 @@ class PostsController extends Controller
             exit();
         }
 
-
-
         //Ici on a le droit de supprimer le post
         $postModel->delete($post->id);
         //On informe l'utilisateur que le post a bien été supprimé
@@ -284,7 +277,6 @@ class PostsController extends Controller
         header("Location: /posts");
 
     }
-
 
     //Logique pour afficher uniquement le début du contenu du post
     public static function shortContent(string $content, int $limit = 100)

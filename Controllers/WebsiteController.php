@@ -64,7 +64,6 @@ class WebsiteController extends Controller
                 exit();
             }
 
-
         }
 
         $websiteModel = new WebsiteModel();
@@ -73,5 +72,4 @@ class WebsiteController extends Controller
 
         $this->render('website/index', $settings);
     }
-
 }
