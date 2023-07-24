@@ -1,2 +1,4 @@
 # Exclude the credentials
 /Core/credentials.php
+.idea/deployment.xml
+.idea/webServers.xml
