@@ -31,7 +31,7 @@ class UsersController extends Controller
             }
 
             if (!empty($_POST["passsword"])){
-                if (!preg_match(`/^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/`, $_POST["password"])){
+                if (!preg_match('/^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/', $_POST["password"])){
                     $_SESSION["errorMessage"] = "Merci de mettre un mot de passe valide, tel que renseigné.";
                     $error = true;
                 }
@@ -45,7 +45,7 @@ class UsersController extends Controller
             }
 
             if (!empty($_POST["username"])){
-                if (!preg_match(`/^[a-zA-Z0-9_]{2,16}$/mg`, $_POST["username"])){
+                if (!preg_match('/^[a-zA-Z0-9_]{2,16}$/', $_POST["username"])){
                     $_SESSION["errorMessage"] = "Le nom d'utilisateur n'est pas valide. Minimum 2 caractères, maximum 16. Les caractères spéciaux ne sont pas acceptés non plus.";
                     $error = true;
                 }
@@ -169,7 +169,7 @@ class UsersController extends Controller
                     } else if (strlen($_POST["username"]) > 16){
                         $error = true;
                         $_SESSION["errorMessage"] = "Ce nom d'utilisateur est trop long. Maximum 16 caractères.";
-                    } else if (!preg_match(`/^[a-zA-Z0-9_]{2,16}$/mg`, $_POST["username"])){
+                    } else if (!preg_match('/^[a-zA-Z0-9_]{2,16}$/', $_POST["username"])){
                         $error = true;
                         $_SESSION["errorMessage"] = "Ce nom d'utilisateur n'est pas valide. Les caractères spéciaux ne sont pas autorisés.";
                     } else {
