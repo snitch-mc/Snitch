@@ -76,18 +76,10 @@ class ReportedModel extends Model
         return $this->customQuery("SELECT * FROM {$this->table} WHERE username = ?", [$username])->fetch();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public function findAllDESC()
+    {
+        $req = $this->customQuery('SELECT * FROM ' . $this->table . ' ORDER BY id DESC');
+        return $req->fetchAll();
+    }
 
 }

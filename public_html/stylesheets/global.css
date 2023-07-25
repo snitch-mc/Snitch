@@ -868,6 +868,7 @@ a{
     font-size: inherit;
     cursor: pointer;
     transition: 300ms ease-in-out;
+    text-wrap: none;
 }
 
 .control-button:hover{
@@ -951,6 +952,37 @@ a{
     margin-top: 100px;
 }
 
+
+/* ------------ REPORTED PAGE ------------ */
+
+.reported-main-container{
+    min-height: calc(100dvh - var(--navbar-height));
+    min-height: calc(100vh - var(--navbar-height));
+    height: 100%;
+    background-color: var(--background-color);
+    padding: 100px;
+    box-sizing: border-box;
+    transition: background-color 350ms ease-in-out;
+}
+.reported-card-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.reported-card{
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+    border: #f2f4f381 2px solid;
+    box-sizing: border-box;
+    background-color: var(--main-color);
+    padding: 20px;
+    width: 250px;
+    aspect-ratio: 1;
+}
 /* ------------ SETTINGS PAGE ------------ */
 
 .settings-main-container{

@@ -192,4 +192,9 @@ class PostsModel extends Model
     {
         return $this->customQuery('SELECT COUNT(*) AS total FROM ' . $this->table)->fetch();
     }
+
+    public function findNumberTimeReported($uuid)
+    {
+        return $this->customQuery("SELECT COUNT(*) AS total FROM {$this->table} WHERE reported_user_uuid = ?", [$uuid])->fetch();
+    }
 }
