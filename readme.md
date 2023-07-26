@@ -20,6 +20,10 @@ Notre but : une communauté Minecraft francophone sûre et agréable.
 - [Base de données](#base-de-données)
 - [Fonctionnalités futures](#fonctionnalités-futures)
 
+## Auteur
+
+- [@thboehi](https://www.github.com/thboehi)
+
 ## Fonctionnalités
 
 - Création de compte
