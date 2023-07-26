@@ -6,6 +6,11 @@ use App\Models\PostsModel;
 
 
 <section class="reported-main-container">
+    <form method="post" style="display: flex; flex-direction: column; gap: 10px; margin: 50px; justify-content: center; align-items: center">
+        <label for="recherche">Rechercher un joueur</label>
+        <input name="recherche" id="recherche" value="<?php if (isset($_POST["recherche"])){echo $_POST["recherche"];} ?>">
+        <button>Rechercher</button>
+    </form>
     <div class="reported-card-container">
         <?php foreach ($data as $reported_user): ?>
 
