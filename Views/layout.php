@@ -32,7 +32,8 @@
             <div id="nav-items" data-state="close">
                 <a href="/" class="txt-button augmented-button <?php if (str_contains($title, "Accueil")) {echo "is-active";}?>">Accueil</a>
                 <a href="/posts/add" class="txt-button augmented-button <?php if (str_contains($title, "Signaler")) {echo "is-active";}?>">Signaler</a>
-                <a href="/posts" class="txt-button augmented-button <?php if (str_contains($title, "Liste")) {echo "is-active";}?>">Liste</a>
+                <a href="/posts" class="txt-button augmented-button <?php if (str_contains($title, "Liste")) {echo "is-active";}?>">Liste signalements</a>
+                <a href="/reported" class="txt-button augmented-button <?php if (str_contains($title, "Joueur signalés")) {echo "is-active";}?>">Liste joueurs</a>
                 <?php if (isset($_SESSION["user"])): ?>
 
                     <?php $user = $_SESSION["user"]["username"]; ?>
