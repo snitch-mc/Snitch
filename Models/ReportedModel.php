@@ -82,4 +82,10 @@ class ReportedModel extends Model
         return $req->fetchAll();
     }
 
+    public function findReportedPlayer($username, $uuid)
+    {
+        $req = $this->customQuery('SELECT * FROM ' . $this->table . ' WHERE username LIKE ? OR uuid LIKE ?', [$username, $uuid]);
+        return $req->fetchAll();
+    }
+
 }
