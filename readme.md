@@ -14,7 +14,7 @@ Notre but : une communauté Minecraft francophone sûre et agréable.
 
 - [Fonctionnalités](#fonctionnalités)
 - [Technologies utilisées](#technologies-utilisées)
-- [Installation](#technologies-utilisées)
+- [Installation](#installation)
 - [Permissions](#permissions)
 - [API Externes](#api-externes)
 - [Base de données](#base-de-données)
